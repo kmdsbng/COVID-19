@@ -3,7 +3,7 @@ name: Ruby
 on:
   schedule:
     - cron:  '0 * * * *'
-    - cron:  '52 * * * *'
+    - cron:  '11 * * * *'
 
 jobs:
   build:
@@ -25,6 +25,8 @@ jobs:
         git fetch src
     - name: git merge
       run: |
+        git branch
+        git branch -r
         git merge -m 'merge data' src/master
     - name: run csv generate script
       run: |
