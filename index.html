@@ -73,8 +73,8 @@ Highcharts.chart('container', {
     },
 
     data: {
-        // csvURL: 'https://raw.githubusercontent.com/kmdsbng/COVID-19/master/converted_data/sample.csv',
-        csvURL: 'http://localhost:8080/converted_data/japan_cases.csv',
+        csvURL: 'https://raw.githubusercontent.com/kmdsbng/COVID-19/master/converted_data/japan_cases.csv',
+        // csvURL: 'http://localhost:8080/converted_data/japan_cases.csv',
         beforeParse: function (csv) {
             return csv.replace(/\n\n/g, '\n');
         }
