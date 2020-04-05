@@ -175,8 +175,8 @@ def print_csv(japan_cases, country_cases_groups)
   days = japan_cases.days
   today = days.last
   todays_japan_count = japan_cases.confirmed(today)
-  days = days[-5..-1]
-  days = (days.first..(days.first + 25))
+  days = days[-10..-1]
+  days = (days.first..(days.first + 30))
 
   offsets = country_cases_groups.map {|country_cases|
     offset = country_cases.calc_day_offset(today, todays_japan_count)
