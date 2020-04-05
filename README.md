@@ -1,3 +1,12 @@
+# JHU CSSEのCOVID-19感染者数を元にした日本の感染者数予測グラフ
+
+https://kmdsbng.github.io/COVID-19/
+
+急激に感染者数が増えた国の過去の感染者数推移データから、現在の日本の感染者数から同じように感染者数が増加したときの感染者数推移をプロットしました。
+
+
+
+
 # 2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository by Johns Hopkins CSSE
 
 

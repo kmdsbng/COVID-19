@@ -2,8 +2,7 @@ name: Ruby
 
 on:
   schedule:
-    - cron:  '0 * * * *'
-    - cron:  '20 * * * *'
+    - cron:  '0 22 * * *'
 
 jobs:
   build:
@@ -16,12 +15,25 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: run csv generate script
+    - name: git checkout master
+      run: |
+        git checkout master
+    - name: git config
+      run: |
+        git config --global user.email "kameda.sbng@gmail.com"
+        git config --global user.name "update csv"
+    - name: git fetch
       run: |
         git remote add src https://github.com/CSSEGISandData/COVID-19.git
         git fetch src
-        git merge -m 'merge data' src/master
+    - name: git merge
+      run: |
+        git merge --allow-unrelated-histories -m 'merge data' src/master
+    - name: run csv generate script
+      run: |
         ruby parse_case.rb csse_covid_19_data/csse_covid_19_daily_reports/*.csv > converted_data/japan_cases.csv
+    - name: git push
+      run: |
         git commit -a -m 'update data'
         git push origin master
-
+        
