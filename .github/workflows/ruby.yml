@@ -3,7 +3,7 @@ name: Ruby
 on:
   schedule:
     - cron:  '0 * * * *'
-    - cron:  '41 * * * *'
+    - cron:  '52 * * * *'
 
 jobs:
   build:
@@ -19,12 +19,18 @@ jobs:
     - name: git checkout master
       run: |
         git checkout master
-    - name: run csv generate script
+    - name: git fetch
       run: |
         git remote add src https://github.com/CSSEGISandData/COVID-19.git
         git fetch src
+    - name: git merge
+      run: |
         git merge -m 'merge data' src/master
+    - name: run csv generate script
+      run: |
         ruby parse_case.rb csse_covid_19_data/csse_covid_19_daily_reports/*.csv > converted_data/japan_cases.csv
+    - name: git push
+      run: |
         git commit -a -m 'update data'
         git push origin master
-
+        
