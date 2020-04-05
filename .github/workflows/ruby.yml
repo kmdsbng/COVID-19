@@ -2,8 +2,8 @@ name: Ruby
 
 on:
   schedule:
-    - cron:  '0 * * * *'
-    - cron:  '11 * * * *'
+    - cron:  '0 22 * * *'
+    - cron:  '15 * * * *'
 
 jobs:
   build:
@@ -25,9 +25,7 @@ jobs:
         git fetch src
     - name: git merge
       run: |
-        git branch
-        git branch -r
-        git merge -m 'merge data' src/master
+        git merge --allow-unrelated-histories -m 'merge data' src/master
     - name: run csv generate script
       run: |
         ruby parse_case.rb csse_covid_19_data/csse_covid_19_daily_reports/*.csv > converted_data/japan_cases.csv
