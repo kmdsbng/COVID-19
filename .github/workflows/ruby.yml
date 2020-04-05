@@ -3,7 +3,7 @@ name: Ruby
 on:
   schedule:
     - cron:  '0 * * * *'
-    - cron:  '20 * * * *'
+    - cron:  '41 * * * *'
 
 jobs:
   build:
@@ -16,6 +16,9 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
+    - name: git checkout master
+      run: |
+        git checkout master
     - name: run csv generate script
       run: |
         git remote add src https://github.com/CSSEGISandData/COVID-19.git
