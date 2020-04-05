@@ -3,7 +3,6 @@ name: Ruby
 on:
   schedule:
     - cron:  '0 22 * * *'
-    - cron:  '35 * * * *'
 
 jobs:
   build:
