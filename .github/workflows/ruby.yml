@@ -22,16 +22,12 @@ jobs:
       run: |
         git config --global user.email "kameda.sbng@gmail.com"
         git config --global user.name "update csv"
-    - name: git fetch
+    - name: fetch src repo
       run: |
-        git remote add src https://github.com/CSSEGISandData/COVID-19.git
-        git fetch src
-    - name: git merge
-      run: |
-        git merge --allow-unrelated-histories -m 'merge data' src/master
+        sh fetch_src_repo.sh
     - name: run csv generate script
       run: |
-        ruby parse_case.rb csse_covid_19_data/csse_covid_19_daily_reports/*.csv > converted_data/japan_cases.csv
+        ruby parse_case.rb src_repo/csse_covid_19_data/csse_covid_19_daily_reports/*.csv > converted_data/japan_cases.csv
     - name: git push
       run: |
         git commit -a -m 'update data'
